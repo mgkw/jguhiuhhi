@@ -35,7 +35,7 @@ users = ['quickpizza.karbala', 'al_hussein_resort', 'almayalisweets', 'charles_1
 
 
 bot = Bot()
-bot.login(ask_for_code=True)
+bot.login()
 
     
 def story(n):
