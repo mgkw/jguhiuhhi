@@ -19,10 +19,10 @@ try:
     from instabot import Bot
      
 except ModuleNotFoundError:
-    os.system('python3 pip install instabot')
-    os.system('python3 pip install requests_toolbelt')
-    os.system('python3 pip install tqdm')
-    os.system('python3 pip install urllib3==1.25.11')
+    os.system('python3 -m pip install instabot')
+    os.system('python3 -m pip install requests_toolbelt')
+    os.system('python3 -m pip install tqdm')
+    os.system('python3 -m pip install urllib3==1.25.11')
     print('\n[+] Done')
 
 
