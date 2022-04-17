@@ -1,252 +1,234 @@
-import os
+from instagrapi import Client
+import random
+import threading
 
-import shutil
+cl = Client()
+cl.login("ngmw2", "Mm11223344",relogin=True)
+users = ['mem9.5w', 'ali_musadaq', '2ss___s', 'sar_._19', 'ramezgalalac', 'kh_alhaneen', 'singeramar', 'heba_saad99', 'merna_alismael', 'omar_mohamed_official', 'sollaf5', 'mariya.kozad', 'iraqait', 'h.aldirawy', 'university_of_baghdad1', 'm.norhene', 'rawan', 'reta.mohamad1', 'jehan.hashim', 'mustafa_alzubayd', 'model_sand', 'cznburak', 'hud_a96', 'alooosh_markae', 'critic_iq', 'asawer.ezit', 'alkhafajitv', 'poet_aboalhassan', 'banat_styel', 'taifofficial', 'jalila_official', 'saadoun_al_saadi', '28.dv', 'nazaralfares', 'sambosa.iraqia', 'iq.turkey', 'aloosh_al_ameer', 'welyanalbaiaty94', 'teba_khalil', 'elena_akbik', 'kamilyaward', 'snara_2', 'elissardancer', 'falafel.iraqia', 'instagram', 'abbas_shibani', 'basma_baghdad', 'ghada.baseel', 'shahnda.al_musawi', 'saja.aldulaimy', 'ali_athab9', 'daliatahastar', 'basmanalkateab_', 'vean123', 'iraq_keekers', 'm.u_r', 'hayarbaraouch', 'hebanourr', 'shurooqalhassen', 'haifa_hassony', 'mahmoodalghiath', 'mustafa_agha1', 'rahmariadh', 'anne_salah_official', 'rehamalbayati', 'iqiq.5', 'sattarsaad', 'aya_alzedan', 'hamo_beka_official', 'hindnizar', 'moatasemalnahar', 'nancyajram', 'd.qasim', 'haifawehbe', 'hassan.shakosh', 'actress_alaa_hussein', '_nabaaofficial_', '3anqene', 'hanadymehanna', 'evannaji', 'jumana.karim.official', 'nadeen_alfahd', 'zinah_ahmed_official', 'mohamedalsalim', 'mayadiab', 'humam_hassan', 'mohammadayad7', 'ashty_hadid', 'alwassef.official', 'dazdamonakh', 'angiekhouryme', 'stars_casablanca', 'shahadalshemari', 'aseelhameem', 'ehab_alatea', 'mays.gumir', 'mzajeat', 'haibat_adel', 'hannahelzahed', 'maher_ahmed76', 'ameer_alabadi94', 'sary_hussam', 'ghassan_esmaeel', 'husamalrassam', 'ahmed_almaslawi', 'nesreentafesh', '313_yousef', 'iraq.marka', 'batoul_official_', 'alaa_alebrahimi', 'raidafade', 'junaed_98', 'ali_jaber35', 'ali_almansory', 'shimaa_qasim', 'bessan.lsmail', 'malayeenkarim', 'souhair', 'zahra_ben_mime', 'aboody_kareem', 'ahlamalshamsi', 'husamalmajidofficial', 'marina_alobaidi', 'alsulltan', 'raedabufatean', 'tayseer_alsafeer', 'ruslan.hadad.offical', 'nadine.nassib.njeim', 'natachasinger', 'mzijeat', 'dalya.khaled', 'mashaheerfun', 'noorstars', 'jaafar_alghazal', 'dr_clean2020', 'hatem_aliraqii', 'amanialaa11', 'alaa_batti', 'omarkamal.official', 'mohammedfares84', 'kashkoolatheer', 'hurramm_khan', 'alijasimm', 'shahla_blogger', 'esra_alaseil', 'dr_kholodiii', 'chayma.allam', 'mustafaalabdullaah', 'asiakamal12', 'mohamedalsallm', 'alialkalede', 'aghar_fb', 'adam_rafet', 'm.khumra', 'hala.al.adil', 'hussamkamil', 'itsdjnemo', 'saifalbasha', 'saifamer_official', 'muhammadalhalfi.off', 'mohamedramadanws', 'ali.alsalem82', 'jalalalzain84', 'ahmed_almuhandes', 'muhaned_azawy', 'kinsey', 'muradturkk', 'yaserabdalwahab', 'ali.samir1', 'amerhussen1', 'cristiano', 'zaid.almallak', 'maysanber', 'ali.saber.official', 'mustafa_alrubayie', 'nooralzain.official', 'aboalhel', 'hybat_albadr', 'husham.althahabi', 'raneen.tapony', 'celebrities_iqmag', 'anne_salah_fans', 'cyrineanour', 'yara', 'qusayessa_off', 'elissazkh', 'ali_fadil', 'sahar_abas_jamil', 'mazajeat', 'nsr_degla', 'dumooa_tahseen', 'ahmed_sattar6', 'ziaedalhabib82', 'anghamtalib89', 'nasratalbader', 'saifnabeell', 'mahmod.alturky', 'rafatalbadr', 'minaalsheikhly', 'hamsa.majed1986', 'dadoo_hn', 'hfalat_vip1', 'ali_altolqanee', 'halamalturk', 'alnjomia', 'albasheershow', 'carmenfragoso.dancer', 'ahmedjwadofficial', 'kasimalsultan', 'fahdnori_official', 'myriamfares', 'oras_sattar', 'awosalhlfe', 'shamsofficial_', 'mbciraqtv', 'dhiya.almyali', 'yousif.alsudani', 'tamerhosny', 'majidalmohandis', 'alialfredawy']
 
-
-try:
-    shutil.rmtree("config")
-except Exception as e:
-    print(e)
-    
-    
-try:
-    import sys
-    import time
-    import random
-    import argparse
-    from random import choice
-    from threading import Thread
-    from instabot import Bot
-     
-except ModuleNotFoundError:
-    os.system('python3 -m pip install instabot')
-    os.system('python3 -m pip install requests_toolbelt')
-    os.system('python3 -m pip install tqdm')
-    os.system('python3 -m pip install urllib3==1.25.11')
-    print('\n[+] Done')
+posts = []
+storyes = []
+usered = []
+nn = 0
+stl = []
+tottel_storyes = 0
+dict = {"conunt":0}
 
 
 
-sys.path.append(os.path.join(sys.path[0], '../../'))
+def mihan1(n):
+    tottel_storyes = 0
+    nn = 0
+    n = 0
+    while True:
+        n += 1
+        usered.clear()
+        posts.clear()
+        if n == 10:
+            print("done")
+            break
+
+        try:
+
+            choses = random.choice(users)
+            pk = cl.user_id_from_username(choses)
+            post = cl.user_medias(pk, 100)
+            for x in post:
+                posts.append(x.pk)
+            chosespost = random.choice(posts)
+            getuser = cl.media_likers(chosespost)
+
+            liker = [str(u.pk) for u in getuser if not u.is_private]
+            for i in liker:
 
 
-users = ['quickpizza.karbala', 'al_hussein_resort', 'almayalisweets', 'charles_1chaplin', 'shawerma.karam', 'moodcafe.karbala', 'hungry__break', 'simsim.rest', 'tootfresh1', 'genius_burger_', 'lafleur_iq', 'kentucky_king_', 'freshmagic.karbala', 'banshee.res', 'durnsrawy', 'churro_station', 'karamna.iq', 'jumaar_resturant', 'kookhdajaj.karbala', 'chocolate__land', 'waraq.ennab', 'alagh2015', 'halwaal_shaam', 'nay.cafe_', 'milano_karbala', 'firefly_iq', 'eat_and_go_karbala', 'candys.lady', 'kentuckyhouse.karbala', 'caramel_karbala', 'novacafe.1', 'robochefsmart', 'lokma.super.star', 'pizzahouse.karbala', 'bait_faruge_iq', 'humam_cake', 'x.burger_', 'roknsultan', 'fire.fire.burger.karbala', 'pizzamaster_karbalaa', 'shaghf.karbala', 'food.fort.iq', 'maali244', 'cha_11a', 'mazayarestaurant_baghdad', 'alfaqma', 'am2o2o1111', 'mohammed___hisham', 'ridhaalwancoffee', 'yalanji.resturant', '_honey.bee.99_', 'lemoniraq', 'guevara_steakhouse', 'dawa.baghdad', 'barley_almansoor', 'shakespeare_baghdad', 'samadrestaurant', 'hardeesbaghdad', 'narabaghdad', 'habaibnaresturant', 'ortakchocolate', 'mandiplate_cafe_and_restaurant', 'beethoven.iraq', 'khan.mandi', 'manwella.rest', 'zaytoun_sweets', 'chesters.restaurant', 'royalgalaxygroup', 'shawarma.aldimashqi', 'icepack.iraq', 'na3na3rest', 'alareesharestaurant', 'shawrmarest', 'aghsan_alzaitoun', 'hookah.syria', 'chocolate.sarayi.iraq', 'yalanji_rest', 'rokn_almandi', 'westburgeriraq', 'madoiraq', 'haifa_hassony', 'manarfarress', 'yunusdiyebirisi0', 'eng_iraqe', 'saifcoloer', 'maya.ahmed97', 'model_haidy', 'sollaf5', 'shahadalshemari', 'a_y_a94', 'ghada.baseel', 'raneen.tapony', 'raidafade', 'halaalkaser', 'helee.bamarni', 'dalisalih', 'nareeman_alqaisi', 'model_marem', 'zainab_rabee_tv', 'mays.gumir', 'marina_alobaidi', 'baraa_ataallah', 'shaymaaraad.official', 'tamara_jammal', 'tayser_aliraqi12', 'jumana.karim.official', 'z44d4', 'nabaahali93', 'hibaazizaziz', 'alaabualshemlat', 'anne_salah_official', 'sabah.aldolaimi', 'zinah_ahmed_official', 'adam_rafet', 'habbawe81', 'ahmedalbaharr', 'magazine_baghdad', 'azal_alsayab', 'hamsa.majed1986', 'mahmoodalghiath', 'junaed_98', 'r_anooz', 'qn_iraq', 'enaastaleb', 'nadamodel', 'aseel_al_bayati', 'shamss_model', 'hasnaa.alshojeri', 'marammarooo_official', 'rafeef_alhafedh', 'shireensoliman_official', 'funon.tv', 'basra.qi', 'iraqi.artmag', 'mehdi.hjerank', 'ma.fn_', 'hayfaa_al_husseini', 'zahraa_alm93', 'ghazal_asady', 'sara_alrubaie.official', 'ashteaqadil', 'du_ali89', 'fatima_alhathal_', 'sajad_algarip', 'omar_mohamed_official', '43zl', 'maymu_88', 'noor.almajed.official', 'noor_almajid397', 'khatab_alqaisi', 'abojana_alselawi', 'sima_jaff', 'nareeman_alqaisi0', 'enas_haleem_', 'roaa_altalabani', 'ci_5m', 'anchors_iraq', 'haneenayad94', 'celebrities_sumer', '_m.a.m_6', 'bero_alazawi', 'dana_hussein86', 'danokhalil2020', 'vean123', 'noor_alarady', 'iraqstars.mag', 'yaqeen.samir', 'dalia_naim1', 'shyma_alshmary', 'saja.aldulaimy', 'raghad_khatoun', 'asawer.ezit', 'mera_taleb', 'dream_magazine.91', 'welyanalbaiaty94', 'rashaalaghafit', 'mashahirnamagazine', 'shahad_eidd', 'qasim.alhjamii', 'iraqs.tyle', 'aseel_naseh', 'farah.ahmad.8', 'rehamfouad95', 'farah.abdulhamed', 'iwjf_org', 'zhwr80', 'amal_ali_90', 'baghdad_famous', 'e.3j6', 'noor_jubouri_', 'bos_phor', 'shams_altmim', 'ishtariqmagazine', 'ahlame_hajji', 'dodo.8606', 'zena_iq2', 'wahaj_ali_ghaidan', 'nejoomelfan', 'noor_al_jawahery', 'dema.ahmad.4', 'raedabufatean', 'bakr_khald', 'alialkalede', 'celebrities_iqmag', 'husamalrassam', 'actress_alaa_hussein']
+                story = cl.user_stories(i)
+                if story == []:
+                    continue
+                usered.append(i)
+                for x in story:
+                    None
+                stl.append(x.pk)
+                to = len(stl)
+                nn += 1
+                tottel_storyes += to
+                cl.story_seen(stl)
+                np = dict["conunt"]
+                if np == 5000:
+                    break
+                np += 1
+                internal_marks = {'conunt': np}
+                dict.update(internal_marks)
+                ki = len(usered)
+                print("user = {} , person: {}".format(ki,dict["conunt"]))
+
+                stl.clear()
+
+
+        except Exception as e:
+            None
+
+
+def mihan2(n):
+    tottel_storyes = 0
+    nn = 0
+    n = 0
+    while True:
+        n += 1
+        usered.clear()
+        posts.clear()
+        if n == 10:
+            print("done")
+            break
+
+        try:
+
+            choses = random.choice(users)
+            pk = cl.user_id_from_username(choses)
+            post = cl.user_medias(pk, 100)
+            for x in post:
+                posts.append(x.pk)
+            chosespost = random.choice(posts)
+            getuser = cl.media_likers(chosespost)
+
+            liker = [str(u.pk) for u in getuser if not u.is_private]
+            for i in liker:
+
+                story = cl.user_stories(i)
+                if story == []:
+                    continue
+                usered.append(i)
+                for x in story:
+                    None
+                stl.append(x.pk)
+                to = len(stl)
+                nn += 1
+                tottel_storyes += to
+                cl.story_seen(stl)
+                np = dict["conunt"]
+                if np == 500:
+                    break
+                np += 1
+                internal_marks = {'conunt': np}
+                dict.update(internal_marks)
+                ki = len(usered)
+                stl.clear()
+
+
+        except Exception as e:
+            None
+
+
+def mihan3(n):
+
+    tottel_storyes = 0
+    nn = 0
+    n = 0
+    while True:
+        n += 1
+        posts.clear()
+        usered.clear()
+
+        if n == 10:
+            print("done")
+            break
+
+        try:
+
+            choses = random.choice(users)
+            pk = cl.user_id_from_username(choses)
+            post = cl.user_medias(pk, 100)
+            for x in post:
+                posts.append(x.pk)
+            chosespost = random.choice(posts)
+            getuser = cl.media_likers(chosespost)
+
+            liker = [str(u.pk) for u in getuser if not u.is_private]
+            for i in liker:
+
+                story = cl.user_stories(i)
+
+                if story == []:
+                    continue
+                usered.append(i)
+                for x in story:
+                    None
+                stl.append(x.pk)
+                to = len(stl)
+                nn += 1
+                tottel_storyes += 1
+                cl.story_seen(stl)
+                np = dict["conunt"]
+                if np == 500:
+                    break
+                np += 1
+                internal_marks = {'conunt': np}
+                dict.update(internal_marks)
+
+                stl.clear()
+
+        except Exception as e:
+            None
+
+
+def mihan4(n):
+    tottel_storyes = 0
+    nn = 0
+    n = 0
+    while True:
+        n += 2
+        posts.clear()
+        usered.clear()
+
+        if n == 10:
+            print("done")
+            break
+
+        try:
+
+            choses = random.choice(users)
+            pk = cl.user_id_from_username(choses)
+            post = cl.user_medias(pk, 100)
+            for x in post:
+                posts.append(x.pk)
+            chosespost = random.choice(posts)
+            getuser = cl.media_likers(chosespost)
+
+            liker = [str(u.pk) for u in getuser if not u.is_private]
+            for i in liker:
+
+                story = cl.user_stories(i)
+
+                if story == []:
+                    continue
+                usered.append(i)
+                for x in story:
+                    None
+                stl.append(x.pk)
+                to = len(stl)
+                nn += 1
+                tottel_storyes += 1
+                cl.story_seen(stl)
+                np = dict["conunt"]
+                if np == 500:
+                    break
+                np += 1
+                internal_marks = {'conunt': np}
+                dict.update(internal_marks)
+
+                stl.clear()
+
+        except Exception as e:
+            None
 
 
 
-bot = Bot()
-bot.login()
+x = threading.Thread(target=mihan1, args=(1,))
+b = threading.Thread(target=mihan2, args=(1,))
+c = threading.Thread(target=mihan3, args=(1,))
+d = threading.Thread(target=mihan4, args=(1,))
 
-    
-def story(n):
-	
-	n = 500
-	print('1')
-	while True:
-	    user_to_get_likers_of = bot.get_user_id_from_username(choice(users))
-	    current_user_id = user_to_get_likers_of
-	    print(choice(users))
-	
-	      
-		
-	    try:
-	        # GET USER FEE
-	        
-	        if not bot.api.get_user_feed(current_user_id):
-	            print("Can't get feed of user_id=%s" % current_user_id)
-	
-	        # GET MEDIA LIKERS
-	        user_media = random.choice(bot.api.last_json["items"])
-	        if not bot.api.get_media_likers(media_id=user_media["pk"]):
-	            print(
-	                "Can't get media likers of media_id='%s' by user_id='%s'" % (user_media["pk"], current_user_id)
-	            )
-	
-	        likers = bot.api.last_json["users"]
-	        liker_ids = [
-	            str(u["pk"]) for u in likers if not u["is_private"] and "latest_reel_media" in u
-	        ]
-	
-	        # WATCH USERS STORIES
-	        if bot.watch_users_reels(liker_ids[:20]):
-	            print("Total stories viewed: %d" % bot.total["stories_viewed"])
-	        if bot.total["stories_viewed"] >= n:
-	        	break
-	        
-	            
-	
-	        # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
-	        current_user_id = random.choice(liker_ids)
-	
-	        if random.random() < 0.05:
-	            current_user_id = user_to_get_likers_of
-	            print("Sleeping and returning back to original user_id=%s" % current_user_id)
-	            
-	
-	    except Exception as e:
-	        # If something went wrong - sleep long and start again
-	        print("Exception:", str(e))
-	        current_user_id = user_to_get_likers_of
-	        
-
-def story_viwe1(n):
-	
-	n = 500
-	print('2')
-	while True:
-	    user_to_get_likers_of = bot.get_user_id_from_username(choice(users))
-	    current_user_id = user_to_get_likers_of
-	    print(choice(users))
-	
-	      
-		
-	    try:
-	        # GET USER FEE
-	        
-	        if not bot.api.get_user_feed(current_user_id):
-	            print("Can't get feed of user_id=%s" % current_user_id)
-	
-	        # GET MEDIA LIKERS
-	        user_media = random.choice(bot.api.last_json["items"])
-	        if not bot.api.get_media_likers(media_id=user_media["pk"]):
-	            print(
-	                "Can't get media likers of media_id='%s' by user_id='%s'" % (user_media["pk"], current_user_id)
-	            )
-	
-	        likers = bot.api.last_json["users"]
-	        liker_ids = [
-	            str(u["pk"]) for u in likers if not u["is_private"] and "latest_reel_media" in u
-	        ]
-	
-	        # WATCH USERS STORIES
-	        if bot.watch_users_reels(liker_ids[:20]):
-	            print("Total stories viewed: %d" % bot.total["stories_viewed"])
-	        if bot.total["stories_viewed"] >= n:
-	        	break
-	        
-	            
-	
-	        # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
-	        current_user_id = random.choice(liker_ids)
-	
-	        if random.random() < 0.05:
-	            current_user_id = user_to_get_likers_of
-	            print("Sleeping and returning back to original user_id=%s" % current_user_id)
-	            
-	
-	    except Exception as e:
-	        # If something went wrong - sleep long and start again
-	        print("Exception:", str(e))
-	        current_user_id = user_to_get_likers_of
-
-
-def story3(n):
-	
-	n = 500
-	print('3')
-	while True:
-	    user_to_get_likers_of = bot.get_user_id_from_username(choice(users))
-	    current_user_id = user_to_get_likers_of
-	    print(choice(users))
-	
-	      
-		
-	    try:
-	        # GET USER FEE
-	        
-	        if not bot.api.get_user_feed(current_user_id):
-	            print("Can't get feed of user_id=%s" % current_user_id)
-	
-	        # GET MEDIA LIKERS
-	        user_media = random.choice(bot.api.last_json["items"])
-	        if not bot.api.get_media_likers(media_id=user_media["pk"]):
-	            print(
-	                "Can't get media likers of media_id='%s' by user_id='%s'" % (user_media["pk"], current_user_id)
-	            )
-	
-	        likers = bot.api.last_json["users"]
-	        liker_ids = [
-	            str(u["pk"]) for u in likers if not u["is_private"] and "latest_reel_media" in u
-	        ]
-	
-	        # WATCH USERS STORIES
-	        if bot.watch_users_reels(liker_ids[:20]):
-	            print("Total stories viewed: %d" % bot.total["stories_viewed"])
-	        if bot.total["stories_viewed"] >= n:
-	        	break
-	        
-	            
-	
-	        # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
-	        current_user_id = random.choice(liker_ids)
-	
-	        if random.random() < 0.05:
-	            current_user_id = user_to_get_likers_of
-	            print("Sleeping and returning back to original user_id=%s" % current_user_id)
-	            
-	
-	    except Exception as e:
-	        # If something went wrong - sleep long and start again
-	        print("Exception:", str(e))
-
-
-def story4(n):
-	
-	n = 500
-	print('4')
-	while True:
-	    user_to_get_likers_of = bot.get_user_id_from_username(choice(users))
-	    current_user_id = user_to_get_likers_of
-	    print(choice(users))
-	
-	      
-		
-	    try:
-	        # GET USER FEE
-	        
-	        if not bot.api.get_user_feed(current_user_id):
-	            print("Can't get feed of user_id=%s" % current_user_id)
-	
-	        # GET MEDIA LIKERS
-	        user_media = random.choice(bot.api.last_json["items"])
-	        if not bot.api.get_media_likers(media_id=user_media["pk"]):
-	            print(
-	                "Can't get media likers of media_id='%s' by user_id='%s'" % (user_media["pk"], current_user_id)
-	            )
-	
-	        likers = bot.api.last_json["users"]
-	        liker_ids = [
-	            str(u["pk"]) for u in likers if not u["is_private"] and "latest_reel_media" in u
-	        ]
-	
-	        # WATCH USERS STORIES
-	        if bot.watch_users_reels(liker_ids[:20]):
-	            print("Total stories viewed: %d" % bot.total["stories_viewed"])
-	        if bot.total["stories_viewed"] >= n:
-	        	break
-	        
-	            
-	
-	        # CHOOSE RANDOM LIKER TO GRAB HIS LIKERS AND REPEAT
-	        current_user_id = random.choice(liker_ids)
-	
-	        if random.random() < 0.05:
-	            current_user_id = user_to_get_likers_of
-	            print("Sleeping and returning back to original user_id=%s" % current_user_id)
-	            
-	
-	    except Exception as e:
-	        # If something went wrong - sleep long and start again
-	        print("Exception:", str(e))
-	        
-x = Thread(target=story, args=(0,))
 x.start()
-
-x = Thread(target=story_viwe1, args=(0,))
-x.start()
-
-x = Thread(target=story3, args=(0,))
-x.start()
-
-x = Thread(target=story4, args=(0,))
-x.start()
+b.start()
+c.start()
+d.start()
